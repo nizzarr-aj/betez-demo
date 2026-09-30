@@ -24,50 +24,39 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      # 1. تحميل ملفات المستودع
       - name: Checkout
         uses: actions/checkout@v4
 
-      # 2. تجهيز نسخة BETZ من ZIP
       - name: Extract BETZ V6
-        shell: bash
         run: |
-          set -e
-
           rm -rf site extracted
           mkdir -p site extracted
 
-          echo "Searching for BETZ V6 ZIP..."
+          unzip -q "BETZ_V6_Markets_BetSlip.zip" -d extracted
 
-          ZIP_FILE="BETZ_V6_Markets_BetSlip.zip"
-
-          if [ ! -f "$ZIP_FILE" ]; then
-            echo "ERROR: $ZIP_FILE not found"
-            echo "Available files:"
-            ls -la
-            exit 1
-          fi
-
-          echo "Extracting $ZIP_FILE..."
-          unzip -q "$ZIP_FILE" -d extracted
-
-          echo "Searching for index.html..."
           INDEX_FILE=$(find extracted -type f -name "index.html" | head -n 1)
 
           if [ -z "$INDEX_FILE" ]; then
-            echo "ERROR: index.html not found inside ZIP"
-            echo "ZIP contents:"
-            find extracted -maxdepth 4 -type f
+            echo "ERROR: index.html not found"
             exit 1
           fi
 
           SITE_ROOT=$(dirname "$INDEX_FILE")
 
-          echo "Website root: $SITE_ROOT"
-
           cp -R "$SITE_ROOT"/. site/
 
-          echo "Final BETZ site:"
-          find site -maxdepth 2 -type f | sort
+          echo "BETZ V6 extracted successfully"
 
-          if [ ! -f "
+          test -f site/index.html
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./site
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
