@@ -1,4 +1,4 @@
-name: Deploy BETZ Demo
+name: Deploy BETZ
 
 on:
   push:
@@ -16,29 +16,25 @@ concurrency:
 
 jobs:
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Prepare BETZ site
+      - name: Extract BETZ ZIP
         run: |
-          rm -rf _site
-          mkdir _site
-          unzip -o BETZ_V2_Demo.zip -d _site
+          rm -rf site
+          mkdir site
+          unzip -o BETZ_Live_V3.zip -d site
 
-      - name: Setup GitHub Pages
+      - name: Configure Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload BETZ site
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: _site
+          path: ./site
 
       - name: Deploy to GitHub Pages
         id: deployment
