@@ -26,34 +26,34 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Prepare BETZ site
+      - name: Extract latest BETZ version
         run: |
           rm -rf site extracted
           mkdir -p site extracted
 
-          unzip -q BETZ_V4_Virtual_Slip.zip -d extracted
+          unzip -q BETZ_V5_Match_Modal.zip -d extracted
 
           INDEX=$(find extracted -type f -name "index.html" | head -n 1)
 
           if [ -z "$INDEX" ]; then
-            echo "index.html not found"
+            echo "ERROR: index.html not found"
             exit 1
           fi
 
           ROOT=$(dirname "$INDEX")
           cp -R "$ROOT"/. site/
 
-          echo "BETZ site prepared:"
+          echo "BETZ site ready:"
           ls -la site
 
-      - name: Setup Pages
+      - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload Pages artifact
+      - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./site
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
