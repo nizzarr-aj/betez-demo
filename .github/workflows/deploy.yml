@@ -30,12 +30,12 @@ jobs:
         run: |
           rm -rf _site
           mkdir _site
-          unzip -o BETZ_V1_Demo.zip -d _site
+          unzip -o BETZ_V2_Demo.zip -d _site
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload site
+      - name: Upload BETZ site
         uses: actions/upload-pages-artifact@v3
         with:
           path: _site
