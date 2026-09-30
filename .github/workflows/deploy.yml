@@ -1,4 +1,4 @@
-name: Deploy BETZ V7
+name: Deploy BETZ V8
 
 on:
   push:
@@ -27,15 +27,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Extract BETZ V7
+      - name: Extract BETZ V8
         run: |
           rm -rf site extracted
           mkdir -p site extracted
 
-          ZIP_FILE=$(find . -maxdepth 1 -type f -name "BETZ_V7*.zip" | head -n 1)
+          ZIP_FILE=$(find . -maxdepth 1 -type f -name "BETZ_V8*.zip" | head -n 1)
 
           if [ -z "$ZIP_FILE" ]; then
-            echo "ERROR: BETZ V7 ZIP not found"
+            echo "ERROR: BETZ V8 ZIP not found"
             exit 1
           fi
 
@@ -51,12 +51,11 @@ jobs:
           fi
 
           SITE_ROOT=$(dirname "$INDEX_FILE")
-
           cp -R "$SITE_ROOT"/. site/
 
-          echo "BETZ V7 extracted successfully"
-
           test -f site/index.html
+
+          echo "BETZ V8 extracted successfully"
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
