@@ -1,9 +1,8 @@
-name: Deploy BETZ Site
+name: Deploy BETZ V7
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -27,26 +26,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Extract BETZ V6
+      - name: Prepare site
         run: |
-          rm -rf site extracted
-          mkdir -p site extracted
-
-          unzip -q "BETZ_V6_Markets_BetSlip.zip" -d extracted
-
-          INDEX_FILE=$(find extracted -type f -name "index.html" | head -n 1)
-
-          if [ -z "$INDEX_FILE" ]; then
-            echo "ERROR: index.html not found"
-            exit 1
-          fi
-
-          SITE_ROOT=$(dirname "$INDEX_FILE")
-
-          cp -R "$SITE_ROOT"/. site/
-
-          echo "BETZ V6 extracted successfully"
-
+          rm -rf site
+          mkdir -p site
+          cp index.html site/index.html
           test -f site/index.html
 
       - name: Setup GitHub Pages
