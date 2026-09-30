@@ -2,7 +2,8 @@ name: Deploy BETZ V7
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -26,11 +27,35 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Prepare site
+      - name: Extract BETZ V7
         run: |
-          rm -rf site
-          mkdir -p site
-          cp index.html site/index.html
+          rm -rf site extracted
+          mkdir -p site extracted
+
+          ZIP_FILE=$(find . -maxdepth 1 -type f -name "BETZ_V7*.zip" | head -n 1)
+
+          if [ -z "$ZIP_FILE" ]; then
+            echo "ERROR: BETZ V7 ZIP not found"
+            exit 1
+          fi
+
+          echo "Found: $ZIP_FILE"
+
+          unzip -q "$ZIP_FILE" -d extracted
+
+          INDEX_FILE=$(find extracted -type f -name "index.html" | head -n 1)
+
+          if [ -z "$INDEX_FILE" ]; then
+            echo "ERROR: index.html not found inside ZIP"
+            exit 1
+          fi
+
+          SITE_ROOT=$(dirname "$INDEX_FILE")
+
+          cp -R "$SITE_ROOT"/. site/
+
+          echo "BETZ V7 extracted successfully"
+
           test -f site/index.html
 
       - name: Setup GitHub Pages
