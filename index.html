@@ -1,1 +1,1090 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BETZ V13</title><style>body{margin:0;background:#08040f;color:#fff;font:14px Arial}.app{max-width:520px;margin:auto;min-height:100vh;background:linear-gradient(#10091b,#07040c)}button{font:inherit;color:inherit;border:0}.top{height:68px;padding:0 14px;display:flex;align-items:center;gap:10px;background:#130c20;border-bottom:1px solid #2d2040}.menu{font-size:26px;background:none}.logo{font-size:22px;font-weight:900;flex:1;color:#35e59b}.bal{border:1px solid #35e59b;border-radius:20px;padding:8px}.hero{margin:14px;height:185px;border-radius:18px;padding:24px;box-sizing:border-box;background:radial-gradient(circle at 80%,#1b8d65,transparent 30%),linear-gradient(135deg,#063b2a,#180b29)}.hero h1{font-size:29px;max-width:270px}.cta{background:#35e59b;color:#06150e;padding:11px 17px;border-radius:9px;font-weight:800}.section{padding:0 14px}.head{display:flex;justify-content:space-between;align-items:center}.green{color:#35e59b}.sports{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.sport{background:#1b132d;border:1px solid #34264d;border-radius:12px;padding:10px 4px}.pic{font-size:29px;background:#0d0a13;border-radius:9px;padding:10px;text-align:center}.sport small{display:block;text-align:center;margin-top:7px}.tabs{margin:14px;padding:4px;background:#140d20;border-radius:11px;display:flex}.tab{flex:1;background:none;padding:10px}.active{background:#35e59b;color:#06150e;border-radius:8px}.match{margin:8px 14px;padding:13px;background:#171025;border:1px solid #302143;border-radius:14px}.meta{display:flex;justify-content:space-between;color:#aaa;font-size:11px}.teams{display:grid;grid-template-columns:1fr 40px 1fr;text-align:center;align-items:center;margin-top:12px}.ti{font-size:25px}.odds{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:12px}.odd{background:#0b0810;border:1px solid #302143;border-radius:8px;padding:8px;text-align:center}.odd b{display:block;color:#35e59b;margin-top:3px}.bottom{position:sticky;bottom:0;height:70px;background:#110a1b;border-top:1px solid #302143;display:grid;grid-template-columns:repeat(5,1fr)}.nav{background:none;color:#aaa;font-size:10px}.nav span{display:block;font-size:21px;margin-bottom:3px}.drawer,.shade{position:fixed;top:0;bottom:0}.shade{left:0;right:0;background:#000b;display:none}.drawer{left:0;width:min(88%,390px);background:#160d24;transform:translateX(-105%);transition:.25s;padding-top:18px;box-sizing:border-box;overflow:auto}.open .shade{display:block}.open .drawer{transform:none}.dh{padding:18px;border-bottom:1px solid #302143;display:flex;gap:10px;align-items:center}.avatar{width:45px;height:45px;border-radius:50%;background:#35e59b;color:#07140e;display:grid;place-items:center;font-weight:900}.close{margin-left:auto;background:none;font-size:27px}.money{margin:14px;padding:14px;border:1px solid #39284e;border-radius:12px}.item{width:100%;text-align:left;background:none;padding:15px 18px}.item:hover{background:#241736}@media(max-width:370px){.sports{gap:4px}.logo{font-size:19px}}</style></head><body><div class="app"><div class="top"><button class="menu" onclick="openM()">☰</button><div class="logo">BETZ</div><div class="bal">◉ 0,00 TND</div></div><section class="hero"><div class="green">BETZ V13</div><h1>Vivez le sport en direct.</h1><p>Sports, matchs et marchés au même endroit.</p><button class="cta">Explorer les matchs</button></section><section class="section"><div class="head"><h2>Bet by Sports</h2><span class="green">Voir tout ›</span></div><div class="sports"><button class="sport"><div class="pic">⚽</div><small>Football</small></button><button class="sport"><div class="pic">🏀</div><small>Basketball</small></button><button class="sport"><div class="pic">🏐</div><small>Volleyball</small></button><button class="sport"><div class="pic">🎾</div><small>Tennis</small></button></div></section><div class="tabs"><button class="tab active" onclick="tab(this,1)">🔴 EN DIRECT</button><button class="tab" onclick="tab(this,0)">PRÉ-MATCH</button></div><div id="live"><div class="match"><div class="meta"><b style="color:#ff5270">● LIVE</b><span>Football • 2e mi-temps</span></div><div class="teams"><div>🔵<br><b>Blue FC</b></div><div>1 : 0</div><div>🔴<br><b>Red United</b></div></div><div class="odds"><div class="odd">1<b>1.72</b></div><div class="odd">N<b>3.40</b></div><div class="odd">2<b>4.20</b></div></div></div><div class="match"><div class="meta"><b style="color:#ff5270">● LIVE</b><span>Basketball</span></div><div class="teams"><div>🟣<br><b>Stars</b></div><div>48 : 45</div><div>🟠<br><b>Wolves</b></div></div><div class="odds"><div class="odd">1<b>1.85</b></div><div class="odd">H<b>1.90</b></div><div class="odd">2<b>2.10</b></div></div></div></div><div id="pre" style="display:none"><div class="match"><div class="meta"><span>DEMAIN • 20:00</span><span>Football</span></div><div class="teams"><div>🟢<br><b>Green City</b></div><div>VS</div><div>⚫<br><b>Black FC</b></div></div><div class="odds"><div class="odd">1<b>2.05</b></div><div class="odd">N<b>3.10</b></div><div class="odd">2<b>3.25</b></div></div></div></div><nav class="bottom"><button class="nav"><span>⌂</span>Accueil</button><button class="nav"><span>⚽</span>Pré-match</button><button class="nav"><span>◉</span>Jeux</button><button class="nav"><span>🃏</span>Casino</button><button class="nav"><span>💬</span>Chat</button></nav></div><div id="drawer"><div class="shade" onclick="closeM()"></div><aside class="drawer"><div class="dh"><div class="avatar">N</div><div><b>Nizzarr</b><small style="display:block;color:#aaa">Compte BETZ</small></div><button class="close" onclick="closeM()">×</button></div><div class="money"><small>Solde réel</small><br><b class="green">0,00 TND</b></div><button class="item">🏀 PRÉSPORTS　›</button><button class="item">◉ PARIS EN DIRECT　›</button><button class="item">🎰 CASINO EN DIRECT　›</button><button class="item">🎰 SLOT CASINO　›</button><button class="item">⚽ SPORTS VIRTUELS　›</button><button class="item">👾 JEUX RAPIDES　›</button><button class="item">🚀 JEUX DE CRASH　›</button><button class="item">🏆 TOURNOI CASINO　 NEW!</button><button class="item">🎡 ROUE DE LA FORTUNE　 HOT</button><hr style="border-color:#302143"><button class="item">📱 MOBILE APP</button><button class="item">👤 MON PROFIL　›</button><button class="item">💳 TRANSACTIONS　›</button><button class="item">⚙️ PARAMÈTRES　›</button></aside></div><script>function openM(){document.body.classList.add('open')}function closeM(){document.body.classList.remove('open')}function tab(b,l){document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');live.style.display=l?'block':'none';pre.style.display=l?'none':'block'}</script></body></html>
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BETZ V13 PRO</title>
+
+<style>
+:root{
+  --bg:#080412;
+  --panel:#120b22;
+  --panel2:#19102f;
+  --green:#45e6a0;
+  --green2:#18bf76;
+  --purple:#8d50ff;
+  --line:#352354;
+  --muted:#9c95ad;
+}
+
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 10% 0%,rgba(69,230,160,.10),transparent 25%),
+    radial-gradient(circle at 95% 5%,rgba(141,80,255,.16),transparent 28%),
+    linear-gradient(180deg,#080412,#0b0616 55%,#07030e);
+  color:#fff;
+  font:14px Arial,sans-serif;
+}
+
+.app{
+  max-width:620px;
+  margin:auto;
+  min-height:100vh;
+  background:linear-gradient(180deg,#0b0617,#080410);
+  padding-bottom:88px;
+}
+
+button{
+  font:inherit;
+  color:inherit;
+  border:0;
+  cursor:pointer;
+}
+
+/* TOP */
+
+.top{
+  height:70px;
+  padding:0 14px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:rgba(13,7,26,.94);
+  border-bottom:1px solid #302047;
+  backdrop-filter:blur(14px);
+  position:sticky;
+  top:0;
+  z-index:120;
+}
+
+.menu{
+  font-size:26px;
+  background:none;
+  width:40px;
+}
+
+.logo{
+  font-size:26px;
+  font-weight:900;
+  letter-spacing:1px;
+  flex:1;
+  color:var(--green);
+}
+
+.bal{
+  border:0;
+  border-radius:20px;
+  padding:9px 12px;
+  background:linear-gradient(135deg,var(--green),var(--green2));
+  color:#06130d;
+  font-weight:900;
+  font-size:12px;
+}
+
+/* HERO */
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  margin:14px 14px 18px;
+  min-height:220px;
+  padding:23px;
+  border:1px solid #3b2860;
+  border-radius:24px;
+
+  background:
+    radial-gradient(circle at 88% 18%,rgba(69,230,160,.34),transparent 24%),
+    radial-gradient(circle at 75% 100%,rgba(141,80,255,.30),transparent 38%),
+    linear-gradient(135deg,#19102f,#0c0818 62%,#10251e);
+
+  box-shadow:0 20px 50px rgba(0,0,0,.38);
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  width:180px;
+  height:180px;
+  right:-65px;
+  bottom:-80px;
+  border:28px solid rgba(69,230,160,.07);
+  border-radius:50%;
+  box-shadow:0 0 0 22px rgba(141,80,255,.05);
+}
+
+.hero .green{
+  font-size:10px;
+  letter-spacing:1.5px;
+  font-weight:900;
+  color:var(--green);
+}
+
+.hero h1{
+  font-size:31px;
+  line-height:1.05;
+  max-width:340px;
+  position:relative;
+  z-index:2;
+  margin:12px 0 10px;
+}
+
+.hero p{
+  color:#b9b1c8;
+  max-width:330px;
+  position:relative;
+  z-index:2;
+  line-height:1.45;
+}
+
+.badge{
+  display:inline-block;
+  margin:4px 0 11px;
+  background:#17102b;
+  border:1px solid #3a2860;
+  padding:7px 9px;
+  border-radius:9px;
+  font-size:9px;
+  color:#bcb4c9;
+  position:relative;
+  z-index:2;
+}
+
+.cta{
+  position:relative;
+  z-index:3;
+  background:linear-gradient(135deg,var(--green),var(--green2));
+  color:#06150e;
+  padding:12px 17px;
+  border-radius:10px;
+  font-weight:900;
+  box-shadow:0 8px 20px rgba(69,230,160,.16);
+}
+
+/* SPORTS */
+
+.proSportsTitle{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  margin:0 14px 10px;
+}
+
+.proSportsTitle h2{
+  font-size:18px;
+  margin:0;
+}
+
+.proSportsTitle span{
+  font-size:9px;
+  color:#827a94;
+}
+
+.proSports{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:9px;
+  margin:0 14px 18px;
+}
+
+.proSport{
+  min-height:100px;
+  border-radius:17px;
+  padding:8px 5px;
+
+  background:linear-gradient(180deg,#1a1130,#110a20);
+  border:1px solid #352352;
+
+  box-shadow:0 9px 22px rgba(0,0,0,.23);
+  color:#fff;
+}
+
+.proSport.active{
+  border-color:var(--green);
+  box-shadow:
+    0 0 0 1px rgba(69,230,160,.18),
+    0 10px 25px rgba(0,0,0,.28);
+}
+
+.proSport .si{
+  width:48px;
+  height:48px;
+  margin:auto;
+  border-radius:14px;
+  display:grid;
+  place-items:center;
+  font-size:25px;
+
+  background:linear-gradient(145deg,#0d1520,#11372a);
+  border:1px solid #315642;
+}
+
+.proSport b{
+  display:block;
+  font-size:11px;
+  margin-top:7px;
+}
+
+.proSport small{
+  color:#7f788f;
+  font-size:9px;
+}
+
+/* DISCOVERY */
+
+.proDiscover{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin:0 14px 14px;
+}
+
+.proCard{
+  min-height:142px;
+  padding:14px;
+  border-radius:19px;
+  position:relative;
+  overflow:hidden;
+
+  background:linear-gradient(145deg,#1a1130,#0d0918);
+  border:1px solid #342251;
+}
+
+.proCard.live{
+  background:linear-gradient(145deg,#102b24,#0c0917);
+  border-color:#285641;
+}
+
+.proCard .tag{
+  font-size:10px;
+  color:#9e96af;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.proCard h3{
+  font-size:20px;
+  line-height:1.05;
+  margin:7px 0;
+}
+
+.proCard .visual{
+  position:absolute;
+  right:10px;
+  bottom:0;
+  font-size:58px;
+  filter:drop-shadow(0 12px 15px #000);
+}
+
+.proCard .sub{
+  position:absolute;
+  bottom:12px;
+  left:14px;
+  color:#9d96aa;
+  font-size:9px;
+}
+
+/* TABS */
+
+.tabs{
+  margin:14px;
+  padding:4px;
+  background:#140d20;
+  border-radius:11px;
+  display:flex;
+  border:1px solid #2e2147;
+}
+
+.tab{
+  flex:1;
+  background:none;
+  padding:10px;
+  font-weight:800;
+  color:#aaa;
+}
+
+.tab.active{
+  background:var(--green);
+  color:#06150e;
+  border-radius:8px;
+}
+
+/* MATCHES */
+
+.match{
+  margin:8px 14px;
+  padding:13px;
+
+  background:linear-gradient(145deg,#171025,#100b1d);
+  border:1px solid #302143;
+  border-radius:17px;
+
+  box-shadow:0 8px 24px rgba(0,0,0,.2);
+}
+
+.meta{
+  display:flex;
+  justify-content:space-between;
+  color:#aaa;
+  font-size:11px;
+}
+
+.teams{
+  display:grid;
+  grid-template-columns:1fr 55px 1fr;
+  text-align:center;
+  align-items:center;
+  margin-top:12px;
+}
+
+.odds{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:7px;
+  margin-top:12px;
+}
+
+.odd{
+  background:#0b0811;
+  border:1px solid #2d2142;
+  border-radius:8px;
+  padding:8px;
+  text-align:center;
+}
+
+.odd b{
+  display:block;
+  color:var(--green);
+  margin-top:3px;
+}
+
+/* BOTTOM */
+
+.proBottom{
+  position:fixed;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:0;
+
+  width:min(620px,100%);
+  z-index:150;
+
+  height:66px;
+
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+
+  background:rgba(12,7,25,.96);
+  backdrop-filter:blur(18px);
+
+  border-top:1px solid #342250;
+  box-shadow:0 -12px 35px rgba(0,0,0,.45);
+
+  padding-bottom:env(safe-area-inset-bottom);
+}
+
+.proBottom button{
+  background:transparent;
+  color:#8f889f;
+  font-size:9px;
+  font-weight:800;
+}
+
+.proBottom .ni{
+  display:block;
+  font-size:19px;
+  margin-bottom:2px;
+}
+
+.proBottom .sel{
+  color:var(--green);
+}
+
+/* MENU */
+
+.proShade{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.67);
+  backdrop-filter:blur(4px);
+  z-index:200;
+  display:none;
+}
+
+.proMenu{
+  position:fixed;
+  top:0;
+  bottom:0;
+  left:0;
+  z-index:210;
+
+  width:min(350px,88vw);
+
+  background:linear-gradient(180deg,#140b26,#090511);
+
+  border-right:1px solid #3a2760;
+
+  transform:translateX(-105%);
+  transition:transform .25s;
+
+  padding:17px;
+  overflow:auto;
+}
+
+.proOpen .proShade{
+  display:block;
+}
+
+.proOpen .proMenu{
+  transform:none;
+}
+
+.proMenuHead{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding-bottom:17px;
+  border-bottom:1px solid #30204a;
+}
+
+.proAvatar{
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+
+  background:var(--green);
+  color:#06130d;
+
+  font-weight:900;
+  font-size:19px;
+}
+
+.proMenuHead small{
+  display:block;
+  color:#8f889e;
+  margin-top:2px;
+}
+
+.proX{
+  margin-left:auto;
+  background:none;
+  font-size:26px;
+  color:#fff;
+}
+
+.proBalance{
+  margin:14px 0;
+  padding:14px;
+
+  border-radius:16px;
+
+  background:linear-gradient(135deg,#17362b,#15102a);
+  border:1px solid #315542;
+}
+
+.proBalance small{
+  color:#9c95a8;
+}
+
+.proBalance b{
+  display:block;
+  color:var(--green);
+  font-size:21px;
+  margin:3px 0;
+}
+
+.proItems{
+  display:grid;
+  gap:6px;
+}
+
+.proItems button{
+  padding:13px 14px;
+  text-align:left;
+
+  background:#140c26;
+  border:1px solid #2e204a;
+  border-radius:12px;
+
+  color:#eee;
+}
+
+.proItems span{
+  display:inline-block;
+  width:28px;
+}
+
+.proNote{
+  margin-top:16px;
+  color:#777084;
+  font-size:9px;
+  line-height:1.5;
+}
+
+@media(max-width:430px){
+
+  .proSports{
+    grid-template-columns:repeat(4,1fr);
+    gap:6px;
+  }
+
+  .proSport{
+    min-width:0;
+  }
+
+  .hero{
+    min-height:208px;
+    padding:20px;
+  }
+
+  .hero h1{
+    font-size:28px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<header class="top">
+
+<button class="menu" onclick="toggleProMenu()">☰</button>
+
+<div class="logo">BETZ</div>
+
+<div class="bal">
+◉ 500,00 TND
+</div>
+
+</header>
+
+<section class="hero">
+
+<div class="green">
+✦ BETZ • SPORTS CENTER
+</div>
+
+<h1>
+Football.<br>
+Les grands matchs.
+</h1>
+
+<p>
+Une expérience sportive moderne, rapide et claire.
+</p>
+
+<div class="badge">
+● Données sportives + sélections virtuelles
+</div>
+
+<br>
+
+<button class="cta"
+onclick="document.getElementById('matches').scrollIntoView({behavior:'smooth'})">
+Voir les matchs →
+</button>
+
+</section>
+
+<div class="proSportsTitle">
+
+<h2>Bet by Sports</h2>
+
+<span>
+CHOISIR UN SPORT
+</span>
+
+</div>
+
+<div class="proSports">
+
+<button class="proSport active"
+onclick="setSport('football');setProSport(this)">
+
+<div class="si">⚽</div>
+
+<b>Football</b>
+
+<small>Matchs</small>
+
+</button>
+
+<button class="proSport"
+onclick="setSport('basketball');setProSport(this)">
+
+<div class="si">🏀</div>
+
+<b>Basketball</b>
+
+<small>Matchs</small>
+
+</button>
+
+<button class="proSport"
+onclick="setSport('volleyball');setProSport(this)">
+
+<div class="si">🏐</div>
+
+<b>Volleyball</b>
+
+<small>Matchs</small>
+
+</button>
+
+<button class="proSport"
+onclick="setSport('tennis');setProSport(this)">
+
+<div class="si">🎾</div>
+
+<b>Tennis</b>
+
+<small>Matchs</small>
+
+</button>
+
+</div>
+
+<div class="proDiscover">
+
+<article class="proCard">
+
+<div class="tag">
+PRÉ-MATCH
+</div>
+
+<h3>
+Les matchs<br>
+à venir
+</h3>
+
+<div class="visual">
+⚽
+</div>
+
+<div class="sub">
+Calendrier • marchés
+</div>
+
+</article>
+
+<article class="proCard live">
+
+<div class="tag">
+EN DIRECT
+</div>
+
+<h3>
+Suivre<br>
+le live
+</h3>
+
+<div class="visual">
+🏟️
+</div>
+
+<div class="sub">
+Scores • statut
+</div>
+
+</article>
+
+</div>
+
+<div class="tabs">
+
+<button class="tab active"
+onclick="tab(this,1)">
+🔴 EN DIRECT
+</button>
+
+<button class="tab"
+onclick="tab(this,0)">
+PRÉ-MATCH
+</button>
+
+</div>
+
+<div id="live">
+
+<div class="match">
+
+<div class="meta">
+
+<b style="color:#ff5270">
+● LIVE
+</b>
+
+<span>
+Football • 2e mi-temps
+</span>
+
+</div>
+
+<div class="teams">
+
+<div>
+🔵<br>
+<b>Blue FC</b>
+</div>
+
+<div>
+1 : 0
+</div>
+
+<div>
+🔴<br>
+<b>Red United</b>
+</div>
+
+</div>
+
+<div class="odds">
+
+<div class="odd">
+1
+<b>1.72</b>
+</div>
+
+<div class="odd">
+N
+<b>3.40</b>
+</div>
+
+<div class="odd">
+2
+<b>4.20</b>
+</div>
+
+</div>
+
+</div>
+
+<div class="match">
+
+<div class="meta">
+
+<b style="color:#ff5270">
+● LIVE
+</b>
+
+<span>
+Basketball
+</span>
+
+</div>
+
+<div class="teams">
+
+<div>
+🟣<br>
+<b>Stars</b>
+</div>
+
+<div>
+48 : 45
+</div>
+
+<div>
+🟠<br>
+<b>Wolves</b>
+</div>
+
+</div>
+
+<div class="odds">
+
+<div class="odd">
+1
+<b>1.85</b>
+</div>
+
+<div class="odd">
+H
+<b>1.90</b>
+</div>
+
+<div class="odd">
+2
+<b>2.10</b>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="pre" style="display:none">
+
+<div class="match">
+
+<div class="meta">
+
+<span>
+DEMAIN • 20:00
+</span>
+
+<span>
+Football
+</span>
+
+</div>
+
+<div class="teams">
+
+<div>
+🟢<br>
+<b>Green City</b>
+</div>
+
+<div>
+VS
+</div>
+
+<div>
+⚫<br>
+<b>Black FC</b>
+</div>
+
+</div>
+
+<div class="odds">
+
+<div class="odd">
+1
+<b>2.05</b>
+</div>
+
+<div class="odd">
+N
+<b>3.10</b>
+</div>
+
+<div class="odd">
+2
+<b>3.25</b>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="matches"></div>
+
+</div>
+
+
+<!-- SIDE MENU -->
+
+<div id="proNav">
+
+<div class="proShade"
+onclick="toggleProMenu()">
+</div>
+
+<aside class="proMenu">
+
+<div class="proMenuHead">
+
+<div class="proAvatar">
+N
+</div>
+
+<div>
+
+<b>Nizzarr</b>
+
+<small>
+Compte BETZ
+</small>
+
+</div>
+
+<button class="proX"
+onclick="toggleProMenu()">
+×
+</button>
+
+</div>
+
+<div class="proBalance">
+
+<small>
+Solde virtuel
+</small>
+
+<b>
+500,00 TND
+</b>
+
+<small>
+Crédits virtuels
+</small>
+
+</div>
+
+<div class="proItems">
+
+<button
+onclick="toggleProMenu();setSport('football');document.getElementById('matches').scrollIntoView({behavior:'smooth'})">
+
+<span>⚽</span>
+Football
+
+</button>
+
+<button
+onclick="toggleProMenu();setSport('basketball');document.getElementById('matches').scrollIntoView({behavior:'smooth'})">
+
+<span>🏀</span>
+Basketball
+
+</button>
+
+<button
+onclick="toggleProMenu();window.scrollTo({top:0,behavior:'smooth'})">
+
+<span>⌂</span>
+Accueil
+
+</button>
+
+<button
+onclick="toggleProMenu()">
+
+<span>🎮</span>
+Jeux virtuels
+
+</button>
+
+<button
+onclick="toggleProMenu()">
+
+<span>💬</span>
+Support
+
+</button>
+
+<button
+onclick="toggleProMenu()">
+
+<span>⚙️</span>
+Paramètres
+
+</button>
+
+</div>
+
+<div class="proNote">
+
+Interface sportive avec crédits virtuels.
+Aucun dépôt ou retrait réel n'est connecté.
+
+</div>
+
+</aside>
+
+</div>
+
+
+<!-- BOTTOM NAV -->
+
+<nav class="proBottom">
+
+<button class="sel"
+onclick="window.scrollTo({top:0,behavior:'smooth'})">
+
+<span class="ni">⌂</span>
+
+Accueil
+
+</button>
+
+<button
+onclick="setSport('football');document.getElementById('matches').scrollIntoView({behavior:'smooth'})">
+
+<span class="ni">⚽</span>
+
+Football
+
+</button>
+
+<button
+onclick="setSport('basketball');document.getElementById('matches').scrollIntoView({behavior:'smooth'})">
+
+<span class="ni">🏀</span>
+
+Basket
+
+</button>
+
+<button
+onclick="alert('Coupon virtuel disponible après sélection d’un marché.')">
+
+<span class="ni">🎟️</span>
+
+Coupon
+
+</button>
+
+<button
+onclick="toggleProMenu()">
+
+<span class="ni">☰</span>
+
+Menu
+
+</button>
+
+</nav>
+
+
+<script>
+
+function toggleProMenu(){
+
+document.body.classList.toggle('proOpen');
+
+}
+
+function setProSport(el){
+
+document
+.querySelectorAll('.proSport')
+.forEach(x=>x.classList.remove('active'));
+
+if(el)
+el.classList.add('active');
+
+}
+
+function tab(b,l){
+
+document
+.querySelectorAll('.tab')
+.forEach(x=>x.classList.remove('active'));
+
+b.classList.add('active');
+
+document.getElementById('live').style.display =
+l ? 'block' : 'none';
+
+document.getElementById('pre').style.display =
+l ? 'none' : 'block';
+
+}
+
+</script>
+
+</body>
+</html>
